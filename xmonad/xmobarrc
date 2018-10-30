@@ -1,0 +1,70 @@
+Config { lowerOnStart = True
+	, font = "xft:Terminus:pixelsize=20"
+	, commands = [ 
+		Run Network "wlp3s0"
+			[ "--Low", "0"
+			, "--High", "32"
+			, "--normal", "#a0a0a0"
+			, "--high"  , "#ff5995"
+			, "--template", "<fc=#ccccc6>net:</fc> <rx>KB/<tx>KB"
+			]
+		10
+		-- battery monitor
+        --, Run BatteryP ["BAT0"] [
+			--"--template" , "batt: <acstatus>"
+			--"-t", "<acstatus><watts> (<left>%)"
+			--, "-L", "10" -- units: %
+			--, "-H", "80" -- units: %
+			--, "-l", "darkred"
+			--, "-m", "green"
+			--, "-h", "#a0a0a0"
+			--, "-f", "AC0/online"
+			--, "--" -- battery specific options
+			---- discharging status
+			--, "-o"	, "<left>% (<timeleft>)"
+			---- AC "on" status
+			--, "-O"	, "<fc=#dAA520>Charging</fc>"
+			---- charged status
+			----, "-i"	, "<fc=#006000>Charged</fc>"
+			--]
+        , Run BatteryP ["BAT0"] [
+			"-t", "batt: <acstatus>"
+			, "-L",		"10"	-- units: %
+			, "-H",		"80"	-- units: %
+			, "--low", "darkred"
+			, "--normal", "darkorange"
+			, "-h", "grey"
+
+			, "--" -- battery specific options
+			-- discharging status
+			, "-o"	, "<left>%"
+			-- AC "on" status
+			, "-O"	, "<fc=#dAA520>Charging</fc>"
+			-- charged status
+			, "-i"	, "<fc=green>101%</fc>"
+			]
+		50
+		, Run Memory
+			[ "--Low", "10"
+			, "--High", "66"
+			, "--normal", "#a0a0a0"
+			, "--high", "#ff5995"
+			, "--template", "<fc=#ccccc6>mem:</fc> <usedratio>%"
+			]
+		10
+		, Run Cpu
+			[ "--Low", "6"
+			, "--High", "50"
+			, "--normal", "#b6e354"
+			, "--high"  , "#ff5995"
+			, "--template", "<fc=#ccccc6>cpu:</fc> <total>%"
+			]
+		10
+		, Run Date "%H:%M" "date" 10
+		, Run Kbd []
+		, Run StdinReader
+	]
+	, sepChar = "%"
+	, alignSep = "}{"
+	, template = "%StdinReader% }{ %wlp3s0% %battery% %cpu% %memory% <action=`gsimplecal`> %date% </action> %kbd%"
+}

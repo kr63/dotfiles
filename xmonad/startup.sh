@@ -15,3 +15,6 @@ trayer\
     --widthtype request\
     --expand true\
     --align right &
+
+# evolution can't connect to the gmail without stop the service
+systemctl stop --user evolution-source-registry.service

@@ -1,5 +1,5 @@
 Config { lowerOnStart = True
-	, font = "xft:Terminus:pixelsize=20"
+	, font = "-xos4-terminus-medium-r-normal--20-*-*-*-*-*-*-*"
 	, commands = [ 
 		Run Network "wlp3s0"
 			[ "--Low", "0"

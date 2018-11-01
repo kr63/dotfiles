@@ -2,6 +2,10 @@
 
 xsetroot -cursor_name left_ptr
 
+# start pulseaudio server & volume control
+start-pulseaudio-x11
+xfce4-volumed-pulse
+
 trayer\
     --edge top\
     --SetPartialStrut true\

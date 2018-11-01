@@ -65,6 +65,7 @@ myManageHook = composeAll
                , className                       =? "Xfce4-settings-manager"             --> doCenterFloat
                , className                       =? "Xfce4-appfinder"                    --> doCenterFloat
                , className                       =? "Slack"                              --> doCenterFloat
+               , className                       =? "Gedit"                              --> doCenterFloat
 
                , stringProperty "WM_ICON_NAME"   =? "Unlock Keyring"                     --> doCenterFloat
                , stringProperty "WM_ICON_NAME"   =? "File Operation Progress"            --> doCenterFloat

@@ -66,6 +66,9 @@ myManageHook = composeAll
                , className                       =? "Xfce4-appfinder"                    --> doCenterFloat
                , className                       =? "Slack"                              --> doCenterFloat
                , className                       =? "Gedit"                              --> doCenterFloat
+               -- , className                       =? "Alltray"                            --> doCenterFloat
+               , className                       =? "Evolution"                          --> doCenterFloat
+               , className                       =? "Gnome-system-monitor"               --> doCenterFloat
 
                , stringProperty "WM_ICON_NAME"   =? "Unlock Keyring"                     --> doCenterFloat
                , stringProperty "WM_ICON_NAME"   =? "File Operation Progress"            --> doCenterFloat
@@ -134,7 +137,7 @@ main = do
         (( mod4Mask, xK_o), spawn "emacsclient -c"),
         (( mod4Mask, xK_p), spawn "rofi -show drun"),
         (( mod4Mask, xK_s), spawn "xfce4-settings-manager"),
-        (( mod4Mask .|. shiftMask, xK_t), spawn "xfce4-taskmanager"),
+        (( mod4Mask .|. shiftMask, xK_t), spawn "gnome-system-monitor"),
         (( 0, xK_Print), spawn "xfce4-screenshooter"),
         (( mod4Mask, xK_g), spawn "google-chrome-stable")
         ]

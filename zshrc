@@ -16,7 +16,7 @@ PROMPT='%F{green}%n@%F{green}%m%f %F{blue}%1~%f %# '
 
 # ------------------------------------------------------------------------------
 # python virtualenvs; set virtualenv name in emacs config!
-alias activate="source ~/.virtualenvs/py36/bin/activate"
+alias activate="source ~/.virtualenvs/py37/bin/activate"
 
 # ------------------------------------------------------------------------------
 # bc alias

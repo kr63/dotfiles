@@ -28,7 +28,11 @@ alias dir="dir -lh --color --group-directories-first"
 # reload dir colors:
 eval "$(dircolors ~/.dir_colors)"
 
-# ------------------------------------------------------------------------------
-# jenv setup
-#THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-[[ -s "/home/lxuser/.jenv/bin/jenv-init.sh" ]] && source "/home/lxuser/.jenv/bin/jenv-init.sh" && source "/home/lxuser/.jenv/commands/completion.sh"
+# # ------------------------------------------------------------------------------
+# # jenv setup
+# #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
+# [[ -s "/home/lxuser/.jenv/bin/jenv-init.sh" ]] && source "/home/lxuser/.jenv/bin/jenv-init.sh" && source "/home/lxuser/.jenv/commands/completion.sh"
+
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/lxuser/.sdkman"
+[[ -s "/home/lxuser/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lxuser/.sdkman/bin/sdkman-init.sh"

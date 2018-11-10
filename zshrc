@@ -31,7 +31,12 @@ alias dir="dir -lh --color --group-directories-first"
 eval "$(dircolors ~/.dir_colors)"
 
 # ------------------------------------------------------------------------------
+# yarn setup
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# ------------------------------------------------------------------------------
 # sdkman setup
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/lxuser/.sdkman"
 [[ -s "/home/lxuser/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lxuser/.sdkman/bin/sdkman-init.sh"
+

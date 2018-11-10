@@ -7,6 +7,9 @@ antigen theme muse
 
 COMPLETION_WAITING_DOTS="true"
 
+export NVM_NO_USE=true
+antigen bundle lukechilds/zsh-nvm
+
 antigen apply
 
 # ------------------------------------------------------------------------------

@@ -1,14 +1,13 @@
-# Sample setup: .oh-my-zsh/templates/zshrc.zsh-template 
+source /home/lxuser/software/antigen.zsh 
 
-export ZSH="/home/lxuser/.oh-my-zsh"
-ZSH_THEME="muse"
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle sdkman/sdkman-cli zsh
+antigen theme muse
+
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(
-  git
-)
-
-source $ZSH/oh-my-zsh.sh
+antigen apply
 
 # ------------------------------------------------------------------------------
 # prompt color setup
@@ -28,11 +27,8 @@ alias dir="dir -lh --color --group-directories-first"
 # reload dir colors:
 eval "$(dircolors ~/.dir_colors)"
 
-# # ------------------------------------------------------------------------------
-# # jenv setup
-# #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-# [[ -s "/home/lxuser/.jenv/bin/jenv-init.sh" ]] && source "/home/lxuser/.jenv/bin/jenv-init.sh" && source "/home/lxuser/.jenv/commands/completion.sh"
-
+# ------------------------------------------------------------------------------
+# sdkman setup
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/lxuser/.sdkman"
 [[ -s "/home/lxuser/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lxuser/.sdkman/bin/sdkman-init.sh"

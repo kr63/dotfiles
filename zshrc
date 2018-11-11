@@ -7,7 +7,7 @@ antigen theme muse
 
 COMPLETION_WAITING_DOTS="true"
 
-export NVM_NO_USE=true
+export NVM_LAZY_LOAD=true
 antigen bundle lukechilds/zsh-nvm
 
 antigen apply
@@ -19,7 +19,7 @@ PROMPT='%F{green}%n@%F{green}%m%f %F{blue}%1~%f %# '
 
 # ------------------------------------------------------------------------------
 # python virtualenvs; set virtualenv name in emacs config!
-alias activate="source ~/.virtualenvs/py37/bin/activate"
+alias activate="source ~/.virtualenvs/default/bin/activate"
 
 # ------------------------------------------------------------------------------
 # bc alias
@@ -33,6 +33,16 @@ eval "$(dircolors ~/.dir_colors)"
 # ------------------------------------------------------------------------------
 # yarn setup
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# ------------------------------------------------------------------------------
+# Tomcat setup
+export CATALINA_HOME="$HOME/software/tomcat"
+export PATH="${CATALINA_HOME}/bin/:${PATH}"
+
+# ------------------------------------------------------------------------------
+# ActiveMQ setup
+export ACTIVEMQ_HOME="$HOME/software/activemq"
+export PATH="${ACTIVEMQ_HOME}/bin/:${PATH}"
 
 # ------------------------------------------------------------------------------
 # sdkman setup

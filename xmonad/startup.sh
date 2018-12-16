@@ -1,5 +1,6 @@
 #! /bin/sh
 
+#/usr/libexec/xfce-polkit &
 xsetroot -cursor_name left_ptr
 
 # start pulseaudio server & volume control
@@ -20,5 +21,4 @@ trayer\
     --expand true\
     --align right &
 
-# evolution can't connect to the gmail without stop the service
-systemctl stop --user evolution-source-registry.service
+#systemctl stop --user evolution-source-registry.service

@@ -104,6 +104,7 @@ myStartupHook = do
     spawn "thunar"
     spawn "google-chrome-stable"
     spawn "compton"
+    spawn "alltray evolution"
     -- spawn ""
 
 defaultLayouts = Tall 1 (0.03) (0.6) ||| Circle ||| Full

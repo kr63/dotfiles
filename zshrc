@@ -45,6 +45,11 @@ export ACTIVEMQ_HOME="$HOME/software/activemq"
 export PATH="${ACTIVEMQ_HOME}/bin/:${PATH}"
 
 # ------------------------------------------------------------------------------
+# RabbitMQ setup
+export RABBITMQ_HOME="$HOME/software/rabbitmq_server"
+export PATH="${RABBITMQ_HOME}/sbin/:${PATH}"
+
+# ------------------------------------------------------------------------------
 # sdkman setup
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/lxuser/.sdkman"

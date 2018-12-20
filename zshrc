@@ -40,6 +40,11 @@ export CATALINA_HOME="$HOME/software/tomcat"
 export PATH="${CATALINA_HOME}/bin/:${PATH}"
 
 # ------------------------------------------------------------------------------
+# Jetty setup
+export JETTY_HOME="$HOME/software/jetty-distribution/"
+export PATH="${JETTY_HOME}/bin/:${PATH}"
+
+# ------------------------------------------------------------------------------
 # ActiveMQ setup
 export ACTIVEMQ_HOME="$HOME/software/activemq"
 export PATH="${ACTIVEMQ_HOME}/bin/:${PATH}"

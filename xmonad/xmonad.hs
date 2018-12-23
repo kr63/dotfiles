@@ -1,4 +1,5 @@
-import XMonad
+-- import XMonad
+import XMonad hiding ( (|||) )
 import System.IO
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.EZConfig(additionalKeys)
@@ -28,6 +29,21 @@ import XMonad.Layout.MouseResizableTile
 import XMonad.Actions.SimpleDate
 import XMonad.Actions.PerWorkspaceKeys
 import XMonad.Actions.MouseResize
+
+------------------------------------------------------------------------
+-- import XMonad.Layout.LayoutCombinators hiding ( (|||) )
+import XMonad.Layout.LayoutCombinators
+-- import XMonad.Layout.WindowNavigation
+
+-- ideaLayout = windowNavigation (Full *|* Full)
+
+-- onebig = windowNavigation (tile ***|* coltile)
+--          
+
+import XMonad.Layout.LayoutScreens
+import XMonad.Layout.TwoPane
+
+------------------------------------------------------------------------
  
 data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 
@@ -107,8 +123,14 @@ myStartupHook = do
     spawn "alltray evolution"
     -- spawn ""
 
+
 defaultLayouts = Tall 1 (0.03) (0.6) ||| Circle ||| Full
-myLayout = onWorkspace "8:vm" Full $ onWorkspace "4:lo" Full $ defaultLayouts
+-- myLayout = onWorkspace "8:vm" Full $ onWorkspace "4:lo" Full $ defaultLayouts
+-- myLayout = onWorkspace "8:vm" Full $ onWorkspace "4:lo" Full $ onWorkspace "9" (Full *|* Full) $ defaultLayouts
+
+ideaLayout = TwoPane (3/100) (1/2) ||| Full
+myLayout = onWorkspace "8:vm" Full $ onWorkspace "4:lo" Full $ onWorkspace "9" (ideaLayout) $ defaultLayouts
+-- myLayout = onWorkspace "8:vm" Full $ onWorkspace "4:lo" Full $ onWorkSpace "9" myLayout2 $ defaultLayouts
   
 main = do
     xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"

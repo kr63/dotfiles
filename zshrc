@@ -55,6 +55,16 @@ export RABBITMQ_HOME="$HOME/software/rabbitmq_server"
 export PATH="${RABBITMQ_HOME}/sbin/:${PATH}"
 
 # ------------------------------------------------------------------------------
+# ZooKeeper setup
+export ZOOKEEPER_HOME="$HOME/software/zookeeper"
+export PATH="${ZOOKEEPER_HOME}/bin/:${PATH}"
+
+# ------------------------------------------------------------------------------
+# kafka setup
+export KAFKA_HOME="$HOME/software/kafka/"
+export PATH="${KAFKA_HOME}/bin/:${PATH}"
+
+# ------------------------------------------------------------------------------
 # sdkman setup
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/lxuser/.sdkman"

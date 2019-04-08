@@ -18,6 +18,9 @@ autoload -Uz promptinit; promptinit
 PROMPT='%F{green}%n@%F{green}%m%f %F{blue}%1~%f %# '
 
 # ------------------------------------------------------------------------------
+export PATH="$HOME/bin:$PATH"
+
+# ------------------------------------------------------------------------------
 # python virtualenvs; set virtualenv name in emacs config!
 alias activate="source ~/.virtualenvs/default/bin/activate"
 

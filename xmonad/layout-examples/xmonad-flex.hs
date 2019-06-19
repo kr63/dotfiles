@@ -40,10 +40,13 @@ import XMonad.Actions.Navigation2D
 import XMonad.Actions.WithAll
 
 import XMonad.Layout.BinarySpacePartition
+import XMonad.Layout.Gaps
+import XMonad.Layout.Spacing
 
 main = do
     xmproc <- spawnPipe "xmobar ./xmobarrc"
-    xmonad $ def
+    xmonad $ withNavigation2DConfig myNavigation2DConfig
+           $ def
         { terminal = "xterm"
         , borderWidth = 4
         , layoutHook = myLayoutHook
@@ -111,23 +114,35 @@ myTabsLayout = avoidStruts
                $ addTabs shrinkText def {fontName = "xft:Monospace-12"}
                $ Simplest
 
+mySpacing = spacing 10
+myGaps = gaps [(U, 10),(D, 10),(L, 10),(R, 10)]
+
 myFlexLayout = avoidStruts
                $ windowNavigation
                $ addTopBar
                $ addTabs shrinkText myTabTheme
                $ subLayout [] (Simplest ||| Accordion)
-               $ ResizableTall 1 (1/20) (2/3) []
+               $ mySpacing $ myGaps $ ResizableTall 1 (1/20) (2/3) []
+
   
 myLayoutHook = onWorkspace "2" myTabsLayout $
                onWorkspace "3" myFlexLayout $
                defaultLayouts
-  
+ 
+myNavigation2DConfig = def
+    { defaultTiledNavigation = centerNavigation
+    , floatNavigation = centerNavigation
+    , screenNavigation = lineNavigation
+    , layoutNavigation = [("Full", centerNavigation)]
+    , unmappedWindowRect = [("Full", singleWindowRect)]
+    }
+
 myKeys =
     [
-      ("M-j", windowGo D True)
-    , ("M-k", windowGo U True)
-    , ("M-h", windowGo R True)
-    , ("M-l", windowGo L True)
+      ("M1-j", windowGo D True)
+    , ("M1-k", windowGo U True)
+    , ("M1-h", windowGo L True)
+    , ("M1-l", windowGo R True)
     , ("M-w h", sendMessage $ pullWindow L)
     , ("M-w l", sendMessage $ pullWindow R)
     , ("M-w j", sendMessage $ pullWindow D)

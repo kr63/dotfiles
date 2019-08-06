@@ -1,6 +1,6 @@
 import XMonad hiding ( (|||) )
 import XMonad.Config.Xfce
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig
 import XMonad.Util.Replace(replace)
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
@@ -10,77 +10,176 @@ import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.LayoutScreens
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.WindowNavigation
-import XMonad.Layout.TwoPane
+-- import XMonad.Layout.TwoPane
 import XMonad.Layout.Circle
+  
+
+import XMonad.Actions.Navigation2D
+import XMonad.Actions.WithAll
+import XMonad.Layout.NoFrillsDecoration
+import XMonad.Layout.Tabbed
+import XMonad.Layout.ResizableTile
+import XMonad.Layout.Accordion
+import XMonad.Layout.Simplest
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.Gaps
+import XMonad.Layout.Spacing
+import XMonad.Operations 
+
   
 main = do
     replace
-    xmonad $ ewmh xfceConfig
+    xmonad $ withNavigation2DConfig myNavigation2DConfig
+           $ ewmh xfceConfig
         { terminal = "urxvt"
         , modMask     = mod4Mask
         , borderWidth = 2
-        , normalBorderColor = "#353945"
-        , focusedBorderColor = "#ffffff"
+        , normalBorderColor = myNormalBorderColor
+        , focusedBorderColor = myFocusedBorderColor
         , startupHook = myStartupHook
         , manageHook = myManageHook <+> manageDocks <+> manageHook xfceConfig
-        , layoutHook = avoidStruts $ myLayout
-        } `additionalKeys` myKeys
+        , layoutHook = myLayoutHook
+        } `additionalKeysP` myKeys
+
+myNormalBorderColor     = "#000000"
+myFocusedBorderColor    = active
 
 --------------------------------------------------------------------------------
 -- key bindigns
 --------------------------------------------------------------------------------
 myKeys =
-    [ ((mod4Mask, xK_p), spawn "xfce4-appfinder")
-    , ((mod4Mask, xK_e), spawn "thunar")
-    , ((mod4Mask, xK_o), spawn "emacsclient -c")
-    , ((mod4Mask, xK_s), spawn "xfce4-settings-manager")
-    , ((mod4Mask .|. shiftMask, xK_t), spawn "gnome-system-monitor")
-    , ((0, xK_Print), spawn "xfce4-screenshooter")
-    , ((mod4Mask, xK_g), spawn "google-chrome-stable")
-    -- , ((mod4Mask .|. shiftMask,                 xK_space), layoutScreens 2 (TwoPane 0.5 0.5))
-    -- , ((mod4Mask .|. controlMask .|. shiftMask, xK_space), rescreen)
-    , ((mod4Mask, xK_d ), sendMessage $ JumpToLayout "tile")
-    , ((mod4Mask, xK_m ), sendMessage $ JumpToLayout "coltile")
-    , ((mod4Mask,                 xK_Right), sendMessage $ Go R)
-    , ((mod4Mask,                 xK_Left ), sendMessage $ Go L)
-    , ((mod4Mask,                 xK_Up   ), sendMessage $ Go U)
-    , ((mod4Mask,                 xK_Down ), sendMessage $ Go D)
-    , ((mod4Mask .|. controlMask, xK_Right), sendMessage $ Swap R)
-    , ((mod4Mask .|. controlMask, xK_Left ), sendMessage $ Swap L)
-    , ((mod4Mask .|. controlMask, xK_Up   ), sendMessage $ Swap U)
-    , ((mod4Mask .|. controlMask, xK_Down ), sendMessage $ Swap D)
+    [
+      --------------------------------------------------------------------------
+      -- Launchers
+      ("M-p", spawn "xfce4-appfinder")
+    , ("M-e", spawn "thunar")
+    , ("M-o", spawn "emacsclient -c")
+    , ("M-s", spawn "xfce4-settings-manager")
+    , ("M-S-t", spawn "gnome-system-monitor")
+    , ("<Print>", spawn "xfce4-screenshooter")
+    , ("M-g", spawn "google-chrome-stable")
+      --------------------------------------------------------------------------
+    --
+      --------------------------------------------------------------------------
+      -- Windows Manage
+    , ("M-j", windowGo D True)
+    , ("M-k", windowGo U True)
+    , ("M-h", windowGo L True)
+    , ("M-l", windowGo R True)
+    , ("M-w h", sendMessage $ pullWindow L)
+    , ("M-w l", sendMessage $ pullWindow R)
+    , ("M-w j", sendMessage $ pullWindow D)
+    , ("M-w k", sendMessage $ pullWindow U)
+    , ("M-w M-h", sendMessage $ pushWindow L)
+    , ("M-w M-l", sendMessage $ pushWindow R)
+    , ("M-w M-j", sendMessage $ pushWindow D)
+    , ("M-w M-k", sendMessage $ pushWindow U)
+    , ("M-w u", withFocused $ sendMessage . UnMerge)
+    , ("M-w m", withFocused $ sendMessage . MergeAll)
+    , ("M-<Backspace>" , kill)
+    , ("M-S-<Backspace>", killAll)
+    , ("M-S-h", sendMessage Shrink)
+    , ("M-S-l", sendMessage Expand)
+    , ("M-S-j", sendMessage MirrorShrink)
+    , ("M-S-k", sendMessage MirrorExpand)
+    --
+    , ("M-C-j", windows W.swapDown)
+    , ("M-C-k", windows W.swapUp)
+    , ("M-'", onGroup W.focusDown')
+    , ("M-;", onGroup W.focusUp')
+    , ("M-q", sendMessage ToggleStruts)
     ]
 
 --------------------------------------------------------------------------------
 -- layout & workspace definition
 --------------------------------------------------------------------------------
--- Разделить экран по вертикали в отношении 3:1
-onebig = windowNavigation (tile ***|* coltile)
-           where
-             -- компоновка для левой части
-             -- master-окно занимает 3/4 по высоте
-             tile = Full
-             -- компоновка для правой части
-             -- располагает все окна в один столбец
-             coltile = Full
 
-defaultLayouts = Tall 1 (0.03) (0.6) ||| Circle ||| Full
-ideaLayout = TwoPane (3/100) (1/2) ||| Full
-myLayout = onWorkspace "9" (ideaLayout) $ -- ideaLayout will be used on workspace "9"
-           onWorkspace "8" onebig $
-           defaultLayouts                 -- defaultLayout will be used on all other workspaces.
+base00  = "#657b83"
+base01  = "#586e75"
+base02  = "#073642"
+base03  = "#002b36"
+red     = "#dc322f"
+blue    = "#268bd2"
+yellow  = "#b58900"
+
+active      = blue
+activeWarn  = red
+inactive    = base02
+focusColor  = blue
+unfocusColor = base02
+
+myFont      = "xft:Monospace-12"
+
+topBarTheme = def
+    { fontName              = myFont
+    , inactiveBorderColor   = base03
+    , inactiveColor         = base03
+    , inactiveTextColor     = base03
+    , activeBorderColor     = active
+    , activeColor           = active
+    , activeTextColor       = active
+    , urgentBorderColor     = red
+    , urgentTextColor       = yellow
+    , decoHeight            = 10
+    }
+
+myTabTheme = def
+    { fontName              = myFont
+    , activeColor           = active
+    , inactiveColor         = base02
+    , activeBorderColor     = active
+    , inactiveBorderColor   = base02
+    , activeTextColor       = base03
+    , inactiveTextColor     = base00
+    }
+
+addTopBar = noFrillsDeco shrinkText topBarTheme
+  
+-- myTabsLayout = avoidStruts
+--                $ addTabs shrinkText def {fontName = "xft:Monospace-12"}
+--                $ Simplest
+
+mySpacing = spacing 10
+myGaps = gaps [(U, 10),(D, 10),(L, 10),(R, 10)]
+
+myFlexLayout = avoidStruts
+               $ windowNavigation
+               $ addTopBar
+               $ addTabs shrinkText myTabTheme
+               $ subLayout [] (Simplest ||| Accordion)
+               -- $ mySpacing $ myGaps $ ResizableTall 1 (0.025) (2/3) []
+               $ ResizableTall 1 (0.025) (2/3) []
+
+defaultLayouts = avoidStruts $ myFlexLayout ||| Circle ||| Full
+  
+-- myLayoutHook = onWorkspace "2" myTabsLayout $
+--                onWorkspace "3" myFlexLayout $
+--                defaultLayouts
+myLayoutHook = defaultLayouts
+ 
+myNavigation2DConfig = def
+    { defaultTiledNavigation = centerNavigation
+    , floatNavigation = centerNavigation
+    , screenNavigation = lineNavigation
+    , layoutNavigation = [("Full", centerNavigation)]
+    , unmappedWindowRect = [("Full", singleWindowRect)]
+    }
+
 
 --------------------------------------------------------------------------------
 -- auto startup
 --------------------------------------------------------------------------------
 myStartupHook = do
-    spawn "~/.xmonad/startup.sh"
-    spawn "xfce4-panel -r"
+    spawn "google-chrome-stable"
+    spawn "urxvt"
     spawn "compton"
     spawn "emacs --daemon"
-    spawn "urxvt"
     spawn "thunar"
-    spawn "google-chrome-stable"
+    spawn "~/.xmonad/startup.sh"
+    spawn "xfce4-panel -r"
+    spawn "xfconf-query -c xfce4-panel -p /panels/panel-0/autohide-behavior -s 2" -- always hide xfce4-panel
+    spawn "xfconf-query -c xfce4-panel -p /panels/panel-0/autohide-behavior -s 0" -- never hide xfce4-panel
+    refresh
     -- spawn ""
 
 --------------------------------------------------------------------------------

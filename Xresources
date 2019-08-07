@@ -1,4 +1,4 @@
-URxvt.font: xft:Terminus-16
+URxvt.font: xft:xos4 Terminus-16
 
 URxvt.background: black
 URxvt.scrollBar: false

@@ -1,4 +1,4 @@
-source /home/lxuser/software/antigen.zsh 
+source /home/rustam/software/antigen.zsh 
 
 antigen use oh-my-zsh
 antigen bundle git
@@ -21,10 +21,6 @@ PROMPT='%F{green}%n@%F{green}%m%f %F{blue}%1~%f %# '
 export PATH="$HOME/bin:$PATH"
 
 # ------------------------------------------------------------------------------
-# python virtualenvs; set virtualenv name in emacs config!
-alias activate="source ~/.virtualenvs/default/bin/activate"
-
-# ------------------------------------------------------------------------------
 # bc alias
 alias bc="bc -li"
 alias dir="dir -lh --color --group-directories-first"
@@ -34,42 +30,19 @@ alias dir="dir -lh --color --group-directories-first"
 eval "$(dircolors ~/.dir_colors)"
 
 # ------------------------------------------------------------------------------
-# yarn setup
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# python virtualenvs; set virtualenv name in emacs config!
+alias activate="source ~/.virtualenvs/default/bin/activate"
 
 # ------------------------------------------------------------------------------
-# Tomcat setup
-export CATALINA_HOME="$HOME/software/tomcat"
-export PATH="${CATALINA_HOME}/bin/:${PATH}"
+export POSTMAN_HOME="$HOME/software/Postman/"
+export IDEA_HOME="$HOME/software/idea-IU/"
 
 # ------------------------------------------------------------------------------
-# Jetty setup
-export JETTY_HOME="$HOME/software/jetty-distribution/"
-export PATH="${JETTY_HOME}/bin/:${PATH}"
-
-# ------------------------------------------------------------------------------
-# ActiveMQ setup
-export ACTIVEMQ_HOME="$HOME/software/activemq"
-export PATH="${ACTIVEMQ_HOME}/bin/:${PATH}"
-
-# ------------------------------------------------------------------------------
-# RabbitMQ setup
-export RABBITMQ_HOME="$HOME/software/rabbitmq_server"
-export PATH="${RABBITMQ_HOME}/sbin/:${PATH}"
-
-# ------------------------------------------------------------------------------
-# ZooKeeper setup
-export ZOOKEEPER_HOME="$HOME/software/zookeeper"
-export PATH="${ZOOKEEPER_HOME}/bin/:${PATH}"
-
-# ------------------------------------------------------------------------------
-# kafka setup
-export KAFKA_HOME="$HOME/software/kafka/"
-export PATH="${KAFKA_HOME}/bin/:${PATH}"
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # ------------------------------------------------------------------------------
 # sdkman setup
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/lxuser/.sdkman"
-[[ -s "/home/lxuser/.sdkman/bin/sdkman-init.sh" ]] && source "/home/lxuser/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/rustam/.sdkman"
+[[ -s "/home/rustam/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rustam/.sdkman/bin/sdkman-init.sh"
 

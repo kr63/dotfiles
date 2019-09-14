@@ -1,4 +1,5 @@
-source /home/rustam/software/antigen.zsh 
+# pacaur -S antigen-git
+source /usr/share/zsh/share/antigen.zsh
 
 antigen use oh-my-zsh
 antigen bundle git

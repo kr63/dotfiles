@@ -1,4 +1,5 @@
-source /home/rustam/software/antigen.zsh 
+# pacaur -S antigen-git
+source /usr/share/zsh/share/antigen.zsh
 
 antigen use oh-my-zsh
 antigen bundle git
@@ -43,6 +44,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # ------------------------------------------------------------------------------
 # sdkman setup
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/rustam/.sdkman"
-[[ -s "/home/rustam/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rustam/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 

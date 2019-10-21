@@ -1,0 +1,196 @@
+{
+  "plugins": [
+    {
+      "pluginId": "GrepConsole",
+      "pluginName": "Grep Console",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang",
+        "com.intellij.modules.java"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.modules.java"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "IdeaVIM",
+      "pluginName": "IdeaVim",
+      "downloadUrl": "http://plugins.jetbrains.com/plugin/164",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "Jenkins Control Plugin",
+      "pluginName": "Jenkins Control Plugin",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "Key Promoter X",
+      "pluginName": "Key Promoter X",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "Lombook Plugin",
+      "pluginName": "Lombok",
+      "downloadUrl": "https://github.com/mplushnikov/lombok-intellij-plugin",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang",
+        "com.intellij.modules.platform",
+        "com.intellij.modules.java"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "com.clutcher.comments_highlighter",
+      "pluginName": "Comments Highlighter",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "mobi.hsz.idea.gitignore",
+      "pluginName": ".ignore",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang",
+        "Git4Idea",
+        "hg4idea"
+      ],
+      "optionalDependencyPluginIds": [
+        "Git4Idea",
+        "hg4idea"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "net.ashald.envfile",
+      "pluginName": "EnvFile",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang",
+        "com.intellij.modules.python",
+        "com.intellij.modules.ruby",
+        "org.jetbrains.plugins.go"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.modules.python",
+        "com.intellij.modules.ruby",
+        "org.jetbrains.plugins.go"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "cn.wuzhizhan.plugin.mybatis",
+      "pluginName": "Free MyBatis plugin",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.database",
+        "com.intellij.spring"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.database",
+        "com.intellij.spring"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "com.seventh7.plugin.mybatis",
+      "pluginName": "MyBatis plugin",
+      "dependencyPluginIds": [
+        "com.intellij.modules.lang",
+        "com.intellij.properties",
+        "org.intellij.intelliLang",
+        "com.intellij.modules.java",
+        "com.intellij.database",
+        "com.intellij.spring",
+        "com.intellij.spring.boot",
+        "com.intellij.spring.data",
+        "org.jetbrains.plugins.yaml",
+        "com.intellij.struts2"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.database",
+        "com.intellij.spring",
+        "com.intellij.spring.boot",
+        "com.intellij.spring.data",
+        "org.jetbrains.plugins.yaml",
+        "com.intellij.struts2"
+      ],
+      "isBundle": false,
+      "isEnable": false
+    },
+    {
+      "pluginId": "com.zhaow.restful.toolkit",
+      "pluginName": "RestfulToolkit",
+      "downloadUrl": "https://plugins.jetbrains.com/plugin/10292-restfultoolkit",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.platform",
+        "com.intellij.properties",
+        "org.jetbrains.plugins.yaml",
+        "org.jetbrains.kotlin"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "org.mapstruct.intellij",
+      "pluginName": "MapStruct Support",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.java"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "zielu.gittoolbox",
+      "pluginName": "GitToolBox",
+      "downloadUrl": "https://github.com/zielu/GitToolBox",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.platform",
+        "Git4Idea",
+        "com.intellij.modules.java",
+        "gr.jchrist.gitextender"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.modules.java",
+        "gr.jchrist.gitextender"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    }
+  ]
+}

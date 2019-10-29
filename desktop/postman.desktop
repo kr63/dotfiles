@@ -4,6 +4,6 @@ Type=Application
 Name=Postman
 Comment=Supercharge your API workflow
 Exec=zsh -ic '$POSTMAN_HOME/Postman'
-Icon=postman.png
+Icon=icon.png
 Actions=
 Categories=Development;IDE;

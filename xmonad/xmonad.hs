@@ -52,7 +52,7 @@ myKeys =
       --------------------------------------------------------------------------
       -- Launchers
       ("M-p", spawn "xfce4-appfinder")
-    , ("M-e", spawn "thunar")
+    , ("M-d", spawn "thunar")
     , ("M-o", spawn "emacsclient -c")
     , ("M-s", spawn "xfce4-settings-manager")
     , ("M-S-t", spawn "gnome-system-monitor")
@@ -66,16 +66,16 @@ myKeys =
     , ("M-k", windowGo U True)
     , ("M-h", windowGo L True)
     , ("M-l", windowGo R True)
-    , ("M-w h", sendMessage $ pullWindow L)
-    , ("M-w l", sendMessage $ pullWindow R)
-    , ("M-w j", sendMessage $ pullWindow D)
-    , ("M-w k", sendMessage $ pullWindow U)
-    , ("M-w M-h", sendMessage $ pushWindow L)
-    , ("M-w M-l", sendMessage $ pushWindow R)
-    , ("M-w M-j", sendMessage $ pushWindow D)
-    , ("M-w M-k", sendMessage $ pushWindow U)
-    , ("M-w u", withFocused $ sendMessage . UnMerge)
-    , ("M-w m", withFocused $ sendMessage . MergeAll)
+    , ("M-i h", sendMessage $ pullWindow L)
+    , ("M-i l", sendMessage $ pullWindow R)
+    , ("M-i j", sendMessage $ pullWindow D)
+    , ("M-i k", sendMessage $ pullWindow U)
+    , ("M-i M-h", sendMessage $ pushWindow L)
+    , ("M-i M-l", sendMessage $ pushWindow R)
+    , ("M-i M-j", sendMessage $ pushWindow D)
+    , ("M-i M-k", sendMessage $ pushWindow U)
+    , ("M-i u", withFocused $ sendMessage . UnMerge)
+    , ("M-i m", withFocused $ sendMessage . MergeAll)
     , ("M-<Backspace>" , kill)
     , ("M-S-<Backspace>", killAll)
     , ("M-S-h", sendMessage Shrink)
@@ -179,7 +179,8 @@ myStartupHook = do
     spawn "xfce4-panel -r"
     spawn "xfconf-query -c xfce4-panel -p /panels/panel-0/autohide-behavior -s 2" -- always hide xfce4-panel
     spawn "xfconf-query -c xfce4-panel -p /panels/panel-0/autohide-behavior -s 0" -- never hide xfce4-panel
-    refresh
+    -- refresh
+    spawn "xrandr --dpi 144"
     -- spawn ""
 
 --------------------------------------------------------------------------------

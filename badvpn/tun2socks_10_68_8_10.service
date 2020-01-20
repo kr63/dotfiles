@@ -1,0 +1,8 @@
+[Unit]
+Description=Start tun2socks_10_68_8_10
+
+[Service]
+ExecStart=badvpn-tun2socks --tundev tun98 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr 10.68.8.10:1080
+
+[Install]
+WantedBy=multi-user.target

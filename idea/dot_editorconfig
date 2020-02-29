@@ -1,4 +1,6 @@
 [*.java]
+ij_java_blank_lines_after_class_header = 1
+ij_java_blank_lines_before_class_end = 1
 ij_java_line_comment_add_space = true
 ij_java_line_comment_at_first_column = false
 

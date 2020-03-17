@@ -10,9 +10,7 @@ import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.LayoutScreens
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.WindowNavigation
--- import XMonad.Layout.TwoPane
 import XMonad.Layout.Circle
-  
 
 import XMonad.Actions.Navigation2D
 import XMonad.Actions.WithAll
@@ -26,6 +24,7 @@ import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import XMonad.Operations 
 
+import Foreign.C.Types
   
 main = do
     replace
@@ -108,7 +107,7 @@ inactive    = base02
 focusColor  = blue
 unfocusColor = base02
 
-myFont      = "xft:Monospace-12"
+myFont = "xft:DejaVu Sans-10"
 
 topBarTheme = def
     { fontName              = myFont
@@ -120,7 +119,7 @@ topBarTheme = def
     , activeTextColor       = active
     , urgentBorderColor     = red
     , urgentTextColor       = yellow
-    , decoHeight            = 10
+    , decoHeight            = 12
     }
 
 myTabTheme = def
@@ -134,11 +133,6 @@ myTabTheme = def
     }
 
 addTopBar = noFrillsDeco shrinkText topBarTheme
-  
--- myTabsLayout = avoidStruts
---                $ addTabs shrinkText def {fontName = "xft:Monospace-12"}
---                $ Simplest
-
 mySpacing = spacing 10
 myGaps = gaps [(U, 10),(D, 10),(L, 10),(R, 10)]
 
@@ -151,10 +145,6 @@ myFlexLayout = avoidStruts
                $ ResizableTall 1 (0.025) (2/3) []
 
 defaultLayouts = avoidStruts $ myFlexLayout ||| Circle ||| Full
-  
--- myLayoutHook = onWorkspace "2" myTabsLayout $
---                onWorkspace "3" myFlexLayout $
---                defaultLayouts
 myLayoutHook = defaultLayouts
  
 myNavigation2DConfig = def
@@ -186,31 +176,46 @@ myStartupHook = do
 --------------------------------------------------------------------------------
 -- Application manage hooks
 --------------------------------------------------------------------------------
+-- Взять значение свойства окна
+getProp :: Atom -> Window -> X (Maybe [CLong])
+getProp a w = withDisplay $ \dpy -> io $ getWindowProperty32 dpy a w
+-- Эта функция проверяет, выставлено ли свойство окна name в значение value
+checkAtom name value = ask >>= \w -> liftX $ do
+          a <- getAtom name
+          val <- getAtom value
+          mbr <- getProp a w
+          case mbr of
+            Just [r] -> return $ elem (fromIntegral r) [val]
+            _ -> return False
+  
 myManageHook = composeAll
-               [ className                     =? "Xfce4-notifyd"           --> doIgnore
-               , className                     =? "URxvt"                   --> doRectFloat (W.RationalRect 0.2 0.2 0.7 0.7)
-               , className                     =? "Xfrun4"                  --> doCenterFloat
-               , className                     =? "Wine"                    --> doCenterFloat
-               , className                     =? "Google-chrome"           --> doShift "1"
-               , className                     =? "Thunar"                  --> doShift "2"
-               , className                     =? "Emacs"                   --> doShift "3"
-               , appName                       =? "libreoffice"             --> doShift "4"
-               , title                         =? "LibreOffice"             --> doShift "4"
-               , appName                       =? "VirtualBox"              --> doShift "6"
-               , className                     =? "Skype"                   --> doShift "5"
-               , className                     =? "Gmpc"                    --> doCenterFloat
-               , className                     =? "mpv"                     --> doCenterFloat
-               , className                     =? "GoldenDict"              --> doCenterFloat
-               , className                     =? "Catfish"                 --> doCenterFloat
-               , className                     =? "Xfce4-settings-manager"  --> doCenterFloat
-               , className                     =? "Xfce4-appfinder"         --> doCenterFloat
-               , className                     =? "Slack"                   --> doCenterFloat
-               , className                     =? "Gedit"                   --> doCenterFloat
-               , className                     =? "Evolution"               --> doCenterFloat
-               , className                     =? "Gnome-system-monitor"    --> doCenterFloat
-               , className                     =? "Org.gnome.gedit"         --> doCenterFloat
-               , className                     =? "File-roller"             --> doCenterFloat
-               , className                     =? "Xfce4-screenshooter"     --> doCenterFloat
-               , className                     =? "Pamac-manager"           --> doCenterFloat
-               , stringProperty "WM_ICON_NAME" =? "File Operation Progress" --> doCenterFloat
+               [ className                     =? "Xfce4-notifyd"             --> doIgnore
+               , className                     =? "URxvt"                     --> doRectFloat (W.RationalRect 0.2 0.2 0.7 0.7)
+               , className                     =? "Xfrun4"                    --> doCenterFloat
+               , className                     =? "Wine"                      --> doCenterFloat
+               , className                     =? "Google-chrome"             --> doShift "1"
+               , className                     =? "Thunar"                    --> doShift "2"
+               , className                     =? "Emacs"                     --> doShift "3"
+               , appName                       =? "libreoffice"               --> doShift "4"
+               , title                         =? "LibreOffice"               --> doShift "4"
+               , appName                       =? "VirtualBox"                --> doShift "6"
+               , className                     =? "Skype"                     --> doShift "5"
+               , className                     =? "Gmpc"                      --> doCenterFloat
+               , className                     =? "mpv"                       --> doCenterFloat
+               , className                     =? "GoldenDict"                --> doCenterFloat
+               , className                     =? "Catfish"                   --> doCenterFloat
+               , className                     =? "Xfce4-settings-manager"    --> doCenterFloat
+               , className                     =? "Xfce4-appfinder"           --> doCenterFloat
+               , className                     =? "Slack"                     --> doCenterFloat
+               , className                     =? "Gedit"                     --> doCenterFloat
+               , className                     =? "Evolution"                 --> doCenterFloat
+               , className                     =? "Gnome-system-monitor"      --> doCenterFloat
+               , className                     =? "Org.gnome.gedit"           --> doCenterFloat
+               , className                     =? "File-roller"               --> doCenterFloat
+               , className                     =? "Xfce4-screenshooter"       --> doCenterFloat
+               , className                     =? "Pamac-manager"             --> doCenterFloat
+               , stringProperty "WM_ICON_NAME" =? "File Operation Progress"   --> doCenterFloat
+               , checkAtom "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_DIALOG" --> doCenterFloat
+               , checkAtom "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU"   --> doCenterFloat
                ]
+

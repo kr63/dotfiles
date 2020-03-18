@@ -57,6 +57,8 @@ myKeys =
     , ("M-S-t", spawn "gnome-system-monitor")
     , ("<Print>", spawn "xfce4-screenshooter")
     , ("M-g", spawn "google-chrome-stable")
+    , ("M-<F12>", spawn "telegram-desktop")
+    , ("M-<F11>", spawn "skypeforlinux")
       --------------------------------------------------------------------------
     --
       --------------------------------------------------------------------------
@@ -169,8 +171,11 @@ myStartupHook = do
     spawn "xfce4-panel -r"
     spawn "xfconf-query -c xfce4-panel -p /panels/panel-0/autohide-behavior -s 2" -- always hide xfce4-panel
     spawn "xfconf-query -c xfce4-panel -p /panels/panel-0/autohide-behavior -s 0" -- never hide xfce4-panel
-    -- refresh
+--------------------------------------------------------------------------------
     spawn "xrandr --dpi 144"
+    spawn "evolution"
+    spawn "~/software/idea-IU/bin/idea.sh"
+    -- refresh
     -- spawn ""
 
 --------------------------------------------------------------------------------
@@ -199,7 +204,9 @@ myManageHook = composeAll
                , appName                       =? "libreoffice"               --> doShift "4"
                , title                         =? "LibreOffice"               --> doShift "4"
                , appName                       =? "VirtualBox"                --> doShift "6"
+               , className                     =? "Evolution"                 --> doShift "6"
                , className                     =? "Skype"                     --> doShift "5"
+               , className                     =? "TelegramDesktop"           --> doCenterFloat
                , className                     =? "Gmpc"                      --> doCenterFloat
                , className                     =? "mpv"                       --> doCenterFloat
                , className                     =? "GoldenDict"                --> doCenterFloat
@@ -215,6 +222,7 @@ myManageHook = composeAll
                , className                     =? "Xfce4-screenshooter"       --> doCenterFloat
                , className                     =? "Pamac-manager"             --> doCenterFloat
                , stringProperty "WM_ICON_NAME" =? "File Operation Progress"   --> doCenterFloat
+               , stringProperty "WM_ICON_NAME" =? "Reminders"                 --> doCenterFloat
                , checkAtom "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_DIALOG" --> doCenterFloat
                , checkAtom "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU"   --> doCenterFloat
                ]

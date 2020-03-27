@@ -17,7 +17,7 @@
     {
       "pluginId": "IdeaVIM",
       "pluginName": "IdeaVim",
-      "downloadUrl": "http://plugins.jetbrains.com/plugin/164",
+      "downloadUrl": "https://plugins.jetbrains.com/plugin/164",
       "dependencyPluginIds": [
         "com.intellij",
         "com.intellij.modules.lang"
@@ -31,9 +31,14 @@
       "pluginName": "Jenkins Control Plugin",
       "dependencyPluginIds": [
         "com.intellij",
-        "com.intellij.modules.lang"
+        "com.intellij.modules.platform",
+        "com.intellij.modules.vcs",
+        "com.intellij.modules.lang",
+        "com.intellij.java"
       ],
-      "optionalDependencyPluginIds": [],
+      "optionalDependencyPluginIds": [
+        "com.intellij.java"
+      ],
       "isBundle": false,
       "isEnable": true
     },
@@ -63,6 +68,29 @@
       "isEnable": true
     },
     {
+      "pluginId": "Pomodoro-tm",
+      "pluginName": "Pomodoro-tm",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.platform"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "cn.wuzhizhan.plugin.mybatis",
+      "pluginName": "Free MyBatis plugin",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.database",
+        "com.intellij.spring"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
       "pluginId": "com.clutcher.comments_highlighter",
       "pluginName": "Comments Highlighter",
       "dependencyPluginIds": [
@@ -74,11 +102,139 @@
       "isEnable": true
     },
     {
+      "pluginId": "com.intellij.plugins.html.instantEditing",
+      "pluginName": "Live Edit",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "JavaScript",
+        "JavaScriptDebugger",
+        "com.intellij.modules.xml",
+        "com.intellij.css",
+        "com.jetbrains.plugins.webDeployment",
+        "org.jetbrains.plugins.sass",
+        "org.jetbrains.plugins.less",
+        "org.jetbrains.plugins.stylus",
+        "com.intellij.jsp",
+        "com.intellij.plugins.watcher"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.jetbrains.plugins.webDeployment",
+        "org.jetbrains.plugins.sass",
+        "org.jetbrains.plugins.less",
+        "org.jetbrains.plugins.stylus",
+        "com.intellij.jsp",
+        "com.intellij.plugins.watcher"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "org.intellij.scala",
+      "pluginName": "Scala",
+      "downloadUrl": "https://confluence.jetbrains.com/display/SCA/Scala+Plugin+for+IntelliJ+IDEA",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.java",
+        "org.jetbrains.idea.maven",
+        "org.intellij.intelliLang",
+        "com.intellij.copyright",
+        "com.intellij.properties",
+        "com.intellij.gradle",
+        "org.jetbrains.android",
+        "DevKit",
+        "Coverage",
+        "com.intellij.persistence",
+        "com.intellij.modules.xml",
+        "com.intellij.modules.ultimate",
+        "com.intellij.css",
+        "JavaScript",
+        "JavaScriptDebugger",
+        "org.jetbrains.java.decompiler",
+        "com.jetbrains.performancePlugin"
+      ],
+      "optionalDependencyPluginIds": [
+        "org.jetbrains.idea.maven",
+        "org.intellij.intelliLang",
+        "com.intellij.copyright",
+        "com.intellij.properties",
+        "com.intellij.gradle",
+        "org.jetbrains.android",
+        "DevKit",
+        "Coverage",
+        "com.intellij.persistence",
+        "com.intellij.modules.xml",
+        "com.intellij.modules.ultimate",
+        "com.intellij.css",
+        "JavaScript",
+        "JavaScriptDebugger",
+        "org.jetbrains.java.decompiler",
+        "com.jetbrains.performancePlugin"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "com.jetbrains.edu",
+      "pluginName": "EduTools",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.lang",
+        "com.intellij.modules.java",
+        "com.intellij.modules.pycharm",
+        "com.intellij.modules.clion",
+        "com.intellij.modules.webstorm",
+        "com.intellij.modules.go",
+        "org.intellij.scala",
+        "org.jetbrains.kotlin",
+        "com.intellij.modules.python",
+        "NodeJS",
+        "com.intellij.modules.androidstudio",
+        "org.rust.lang",
+        "org.jetbrains.plugins.yaml",
+        "org.jetbrains.plugins.go",
+        "org.jetbrains.android"
+      ],
+      "optionalDependencyPluginIds": [
+        "com.intellij.modules.java",
+        "com.intellij.modules.pycharm",
+        "com.intellij.modules.clion",
+        "com.intellij.modules.webstorm",
+        "com.intellij.modules.go",
+        "org.intellij.scala",
+        "org.jetbrains.kotlin",
+        "com.intellij.modules.python",
+        "NodeJS",
+        "com.intellij.modules.androidstudio",
+        "org.rust.lang",
+        "org.jetbrains.plugins.yaml",
+        "org.jetbrains.plugins.go",
+        "org.jetbrains.android"
+      ],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
+      "pluginId": "com.zhaow.restful.toolkit",
+      "pluginName": "RestfulToolkit",
+      "downloadUrl": "https://plugins.jetbrains.com/plugin/10292-restfultoolkit",
+      "dependencyPluginIds": [
+        "com.intellij",
+        "com.intellij.modules.platform",
+        "com.intellij.properties",
+        "org.jetbrains.plugins.yaml",
+        "org.jetbrains.kotlin"
+      ],
+      "optionalDependencyPluginIds": [],
+      "isBundle": false,
+      "isEnable": true
+    },
+    {
       "pluginId": "mobi.hsz.idea.gitignore",
       "pluginName": ".ignore",
       "dependencyPluginIds": [
         "com.intellij",
         "com.intellij.modules.lang",
+        "com.intellij.modules.vcs",
         "Git4Idea",
         "hg4idea"
       ],
@@ -108,69 +264,34 @@
       "isEnable": true
     },
     {
-      "pluginId": "cn.wuzhizhan.plugin.mybatis",
-      "pluginName": "Free MyBatis plugin",
+      "pluginId": "socrates.tabshifter",
+      "pluginName": "Tab Shifter",
       "dependencyPluginIds": [
         "com.intellij",
-        "com.intellij.database",
-        "com.intellij.spring"
+        "com.intellij.modules.lang"
       ],
-      "optionalDependencyPluginIds": [
-        "com.intellij.database",
-        "com.intellij.spring"
-      ],
+      "optionalDependencyPluginIds": [],
       "isBundle": false,
       "isEnable": true
     },
     {
-      "pluginId": "com.seventh7.plugin.mybatis",
-      "pluginName": "MyBatis plugin",
+      "pluginId": "training",
+      "pluginName": "IDE Features Trainer",
       "dependencyPluginIds": [
-        "com.intellij.modules.lang",
-        "com.intellij.properties",
-        "org.intellij.intelliLang",
+        "com.intellij",
+        "com.intellij.testGuiFramework",
         "com.intellij.modules.java",
-        "com.intellij.database",
-        "com.intellij.spring",
-        "com.intellij.spring.boot",
-        "com.intellij.spring.data",
-        "org.jetbrains.plugins.yaml",
-        "com.intellij.struts2"
+        "com.intellij.modules.ruby",
+        "org.jetbrains.plugins.go",
+        "com.intellij.modules.cidr.lang"
       ],
       "optionalDependencyPluginIds": [
-        "com.intellij.database",
-        "com.intellij.spring",
-        "com.intellij.spring.boot",
-        "com.intellij.spring.data",
-        "org.jetbrains.plugins.yaml",
-        "com.intellij.struts2"
+        "com.intellij.testGuiFramework",
+        "com.intellij.modules.java",
+        "com.intellij.modules.ruby",
+        "org.jetbrains.plugins.go",
+        "com.intellij.modules.cidr.lang"
       ],
-      "isBundle": false,
-      "isEnable": false
-    },
-    {
-      "pluginId": "com.zhaow.restful.toolkit",
-      "pluginName": "RestfulToolkit",
-      "downloadUrl": "https://plugins.jetbrains.com/plugin/10292-restfultoolkit",
-      "dependencyPluginIds": [
-        "com.intellij",
-        "com.intellij.modules.platform",
-        "com.intellij.properties",
-        "org.jetbrains.plugins.yaml",
-        "org.jetbrains.kotlin"
-      ],
-      "optionalDependencyPluginIds": [],
-      "isBundle": false,
-      "isEnable": true
-    },
-    {
-      "pluginId": "org.mapstruct.intellij",
-      "pluginName": "MapStruct Support",
-      "dependencyPluginIds": [
-        "com.intellij",
-        "com.intellij.modules.java"
-      ],
-      "optionalDependencyPluginIds": [],
       "isBundle": false,
       "isEnable": true
     },

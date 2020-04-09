@@ -1,1 +1,5 @@
-/home/lxuser/.virtualenvs/requirements.txt
+jedi
+epc
+mitmproxy
+ipdb
+bs4

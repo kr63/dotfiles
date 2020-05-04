@@ -13,6 +13,7 @@ import XMonad.Layout.WindowNavigation
 import XMonad.Layout.Circle
 
 import XMonad.Actions.Navigation2D
+import XMonad.Actions.WindowGo
 import XMonad.Actions.WithAll
 import XMonad.Layout.NoFrillsDecoration
 import XMonad.Layout.Tabbed
@@ -20,10 +21,9 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.Accordion
 import XMonad.Layout.Simplest
 import XMonad.Layout.SubLayouts
-import XMonad.Layout.Gaps
-import XMonad.Layout.Spacing
 import XMonad.Operations 
 
+import Control.Monad (liftM2)
 import Foreign.C.Types
   
 main = do
@@ -51,16 +51,17 @@ myKeys =
       --------------------------------------------------------------------------
       -- Launchers
       ("M-p", spawn "xfce4-appfinder")
-    , ("M-d", spawn "thunar")
     , ("M-o", spawn "emacsclient -c")
     , ("M-s", spawn "xfce4-settings-manager")
     , ("M-S-t", spawn "gnome-system-monitor")
     , ("<Print>", spawn "xfce4-screenshooter")
-    , ("M-g", spawn "google-chrome-stable")
-    , ("M-<F12>", spawn "telegram-desktop")
+    , ("M-<F8>", runOrRaise "google-chrome-stable" (className =? "Google-chrome"))
+    , ("M-<F9>", runOrRaise "thunar" (className =? "Thunar"))
+    , ("M-<F10>", runOrRaise "evolution" (className =? "Evolution"))
+    , ("M-<F12>", runOrRaise "telegram-desktop" (className =? "TelegramDesktop"))
     , ("M-<F11>", spawn "skypeforlinux")
-      --------------------------------------------------------------------------
-    --
+
+
       --------------------------------------------------------------------------
       -- Windows Manage
     , ("M-j", windowGo D True)
@@ -135,15 +136,12 @@ myTabTheme = def
     }
 
 addTopBar = noFrillsDeco shrinkText topBarTheme
-mySpacing = spacing 10
-myGaps = gaps [(U, 10),(D, 10),(L, 10),(R, 10)]
 
 myFlexLayout = avoidStruts
                $ windowNavigation
                $ addTopBar
                $ addTabs shrinkText myTabTheme
                $ subLayout [] (Simplest ||| Accordion)
-               -- $ mySpacing $ myGaps $ ResizableTall 1 (0.025) (2/3) []
                $ ResizableTall 1 (0.025) (2/3) []
 
 defaultLayouts = avoidStruts $ myFlexLayout ||| Circle ||| Full
@@ -200,7 +198,7 @@ myManageHook = composeAll
                , className                     =? "Wine"                      --> doCenterFloat
                , className                     =? "Google-chrome"             --> doShift "1"
                , className                     =? "Thunar"                    --> doShift "2"
-               , className                     =? "Emacs"                     --> doShift "3"
+               , className                     =? "Emacs"                     --> viewShift "3"
                , appName                       =? "libreoffice"               --> doShift "4"
                , title                         =? "LibreOffice"               --> doShift "4"
                , appName                       =? "VirtualBox"                --> doShift "6"
@@ -215,7 +213,6 @@ myManageHook = composeAll
                , className                     =? "Xfce4-appfinder"           --> doCenterFloat
                , className                     =? "Slack"                     --> doCenterFloat
                , className                     =? "Gedit"                     --> doCenterFloat
-               , className                     =? "Evolution"                 --> doCenterFloat
                , className                     =? "Gnome-system-monitor"      --> doCenterFloat
                , className                     =? "Org.gnome.gedit"           --> doCenterFloat
                , className                     =? "File-roller"               --> doCenterFloat
@@ -226,4 +223,5 @@ myManageHook = composeAll
                , checkAtom "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_DIALOG" --> doCenterFloat
                , checkAtom "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU"   --> doCenterFloat
                ]
+            where viewShift = doF . liftM2 (.) W.greedyView W.shift
 

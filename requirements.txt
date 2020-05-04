@@ -3,3 +3,4 @@ epc
 mitmproxy
 ipdb
 bs4
+xlsxwriter

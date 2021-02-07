@@ -1,6 +1,8 @@
 jedi
 epc
 mitmproxy
+ipython
 ipdb
 bs4
 xlsxwriter
+youtube-dl

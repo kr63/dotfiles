@@ -57,7 +57,7 @@ myKeys =
     , ("<Print>", spawn "xfce4-screenshooter")
     , ("M-<F8>", runOrRaiseMaster "google-chrome-stable" (className =? "Google-chrome"))
     , ("M-<F9>", runOrRaiseMaster "thunar" (className =? "Thunar"))
-    , ("M-<F10>", runOrRaiseMaster "evolution" (className =? "Evolution"))
+    , ("M-<F10>", runOrRaiseMaster "icq" (className =? "icq"))
     , ("M-<F12>", runOrRaiseMaster "telegram-desktop" (className =? "TelegramDesktop"))
     , ("M-<F11>", spawn "skypeforlinux")
 
@@ -205,6 +205,7 @@ myManageHook = composeAll
                , className                     =? "Evolution"                 --> doShift "6"
                , className                     =? "Skype"                     --> doShift "5"
                , className                     =? "TelegramDesktop"           --> doCenterFloat
+               , className                     =? "icq"                       --> doCenterFloat
                , className                     =? "Gmpc"                      --> doCenterFloat
                , className                     =? "mpv"                       --> doCenterFloat
                , className                     =? "GoldenDict"                --> doCenterFloat

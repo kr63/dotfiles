@@ -1,16 +1,17 @@
-<scheme name="Visual Studio 2013(Edit) copy" version="142" parent_scheme="Default">
-  <option name="FONT_SCALE" value="1.0" />
+<scheme name="Visual Studio 2013" version="142" parent_scheme="Default">
+  <option name="FONT_SCALE" value="1.5" />
   <metaInfo>
-    <property name="created">2019-08-21T01:01:30</property>
+    <property name="created">2021-05-06T22:54:01</property>
     <property name="ide">idea</property>
-    <property name="ideVersion">2019.2.0.0</property>
-    <property name="modified">2019-08-21T01:01:53</property>
-    <property name="originalScheme">Visual Studio 2013(Edit) copy</property>
+    <property name="ideVersion">2021.1.1.0.0</property>
+    <property name="modified">2021-05-06T22:54:06</property>
+    <property name="originalScheme">Visual Studio 2013</property>
   </metaInfo>
   <option name="LINE_SPACING" value="1.0" />
-  <option name="EDITOR_FONT_SIZE" value="18" />
+  <option name="EDITOR_FONT_SIZE" value="24" />
   <option name="EDITOR_FONT_NAME" value="Monospaced" />
   <option name="CONSOLE_FONT_NAME" value="Monospaced" />
+  <option name="CONSOLE_FONT_SIZE" value="27" />
   <colors>
     <option name="ADDED_LINES_COLOR" value="295622" />
     <option name="CARET_COLOR" value="bbbbbb" />
@@ -22,6 +23,7 @@
     <option name="DIAGRAM_NODE_HEADER" value="3c3f41" />
     <option name="DIAGRAM_NOTE_BACKGROUND" value="3c3f41" />
     <option name="DIAGRAM_NOTE_BORDER" value="3c3f41" />
+    <option name="DOCUMENTATION_COLOR" value="" />
     <option name="FILESTATUS_ADDED" value="629755" />
     <option name="FILESTATUS_DELETED" value="6c6c6c" />
     <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="6c6c6c" />
@@ -70,6 +72,24 @@
       <value>
         <option name="FOREGROUND" value="4ec9b0" />
         <option name="FONT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="ASCIIDOC_MONO">
+      <value />
+    </option>
+    <option name="ASCIIDOC_MONOBOLD">
+      <value>
+        <option name="FONT_TYPE" value="1" />
+      </value>
+    </option>
+    <option name="ASCIIDOC_MONOBOLDITALIC">
+      <value>
+        <option name="FONT_TYPE" value="3" />
+      </value>
+    </option>
+    <option name="ASCIIDOC_MONOITALIC">
+      <value>
+        <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="BAD_CHARACTER">
@@ -833,7 +853,7 @@
     </option>
     <option name="WRONG_REFERENCES_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="bc3f3c" />
+        <option name="BACKGROUND" value="c40000" />
       </value>
     </option>
   </attributes>

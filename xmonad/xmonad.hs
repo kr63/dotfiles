@@ -201,10 +201,12 @@ myManageHook = composeAll
                , className                     =? "Emacs"                     --> viewShift "3"
                , appName                       =? "libreoffice"               --> doShift "4"
                , title                         =? "LibreOffice"               --> doShift "4"
+               , className                     =? "Evolution"                 --> doRectFloat (W.RationalRect 0.2 0.2 0.7 0.7)
                , appName                       =? "VirtualBox"                --> doShift "6"
-               , className                     =? "Evolution"                 --> doShift "6"
+               , className                     =? "Wfica"                     --> viewShift "6"
                , className                     =? "Skype"                     --> doShift "5"
                , className                     =? "TelegramDesktop"           --> doCenterFloat
+               , className                     =? "zoom"                      --> doCenterFloat
                , className                     =? "icq"                       --> doCenterFloat
                , className                     =? "Gmpc"                      --> doCenterFloat
                , className                     =? "mpv"                       --> doCenterFloat
@@ -221,6 +223,9 @@ myManageHook = composeAll
                , className                     =? "Pamac-manager"             --> doCenterFloat
                , stringProperty "WM_ICON_NAME" =? "File Operation Progress"   --> doCenterFloat
                , stringProperty "WM_ICON_NAME" =? "Reminders"                 --> doCenterFloat
+               , stringProperty "WM_ICON_NAME" =? "Citrix Workspace"          --> doCenterFloat
+               -- WM_ICON_NAME(STRING) = "Citrix Workspace"
+               -- WM_CLASS(STRING) = "EDialog_popup", "Wfica_ErrorOrInfo"
                , checkAtom "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_DIALOG" --> doCenterFloat
                , checkAtom "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_MENU"   --> doCenterFloat
                ]

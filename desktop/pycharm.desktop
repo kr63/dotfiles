@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyCharm Professional Edition
+Icon=pycharm.svg
+Exec=zsh -ic '$PYCHARM_HOME/bin/pycharm.sh' %f
+Comment=Capable and Ergonomic IDE for python
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-pycharm

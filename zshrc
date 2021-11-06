@@ -37,6 +37,7 @@ alias activate="source ~/.virtualenvs/default/bin/activate"
 # ------------------------------------------------------------------------------
 export POSTMAN_HOME="$HOME/software/Postman/"
 export IDEA_HOME="$HOME/software/idea-IU/"
+export PYCHARM_HOME="$HOME/software/pycharm/"
 
 # ------------------------------------------------------------------------------
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -45,5 +46,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # sdkman setup
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
+export JAVA_HOME='$SDKMAN_DIR/candidates/java/current'
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 

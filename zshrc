@@ -43,6 +43,12 @@ export PYCHARM_HOME="$HOME/software/pycharm/"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # ------------------------------------------------------------------------------
+# Kubernetes settings
+source <(kubectl completion zsh)
+alias k=kubectl
+complete -F __start_kubectl k
+
+# ------------------------------------------------------------------------------
 # sdkman setup
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

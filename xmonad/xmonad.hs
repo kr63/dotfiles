@@ -55,12 +55,11 @@ myKeys =
     , ("M-s", spawn "xfce4-settings-manager")
     , ("M-S-t", spawn "gnome-system-monitor")
     , ("<Print>", spawn "xfce4-screenshooter")
-    , ("M-<F8>", runOrRaiseMaster "google-chrome-stable" (className =? "Google-chrome"))
+    , ("M-<F8>", spawn "skypeforlinux")
     , ("M-<F9>", runOrRaiseMaster "thunar" (className =? "Thunar"))
-    , ("M-<F10>", runOrRaiseMaster "icq" (className =? "icq"))
+    , ("M-<F10>", runOrRaiseMaster "google-chrome-stable" (className =? "Google-chrome"))
+    , ("M-<F11>", runOrRaiseMaster "zoom" (className =? "zoom"))
     , ("M-<F12>", runOrRaiseMaster "telegram-desktop" (className =? "TelegramDesktop"))
-    , ("M-<F11>", spawn "skypeforlinux")
-
 
       --------------------------------------------------------------------------
       -- Windows Manage

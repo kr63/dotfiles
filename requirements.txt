@@ -6,3 +6,4 @@ ipdb
 bs4
 xlsxwriter
 youtube-dl
+yt-dlp

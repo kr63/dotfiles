@@ -11,6 +11,9 @@ COMPLETION_WAITING_DOTS="true"
 export NVM_LAZY_LOAD=true
 antigen bundle lukechilds/zsh-nvm
 
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
 antigen apply
 
 # ------------------------------------------------------------------------------
@@ -41,6 +44,10 @@ export PYCHARM_HOME="$HOME/software/pycharm/"
 
 # ------------------------------------------------------------------------------
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# ------------------------------------------------------------------------------
+# solana install
+export PATH="/home/lxuser/.local/share/solana/install/active_release/bin:$PATH"
 
 # ------------------------------------------------------------------------------
 # Kubernetes settings
